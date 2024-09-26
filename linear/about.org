@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       2dd769fc-b185-4100-8b70-bd36a965f90e
+:END:
+#+title: linear
+#+category: linear
+
+
+* HW

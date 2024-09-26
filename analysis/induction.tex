@@ -1,0 +1,259 @@
+% Created 2024-09-25 Wed 00:54
+% Intended LaTeX compiler: xelatex
+\documentclass[letterpaper]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{CMU Serif}
+\usepackage{bookmark}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\setlength{\parindent}{0pt}
+\author{Gleb Anohin}
+\date{\textit{{[}2024-09-09 Mon 10:52]}}
+\title{analysis induction}
+\hypersetup{
+ pdfauthor={Gleb Anohin},
+ pdftitle={analysis induction},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Ханойская башня (пример)}
+\label{sec:org926daf0}
+\begin{enumerate}
+\item Проверили, что можно переместить башню из одного блина (база)\\
+\item Предположим, что мы умеем перемещать башню из n - 1 блина (предположение)\\
+\item Переместим по правилам n - 1 верхних блинов на второй кол (умеем);\\
+Перместим n-й блин с первого кола на третий;\\
+Переместим по правилам n - 1 блинов со второго на третий кол (умеем).\\
+\end{enumerate}
+
+По итогу мы переместили все n блинов на третий кол.\\
+\section{Аксиома математической индукции}
+\label{sec:org08ec334}
+Пусть P(n) - предикат, \(n \in N\).\\
+
+Пусть \(P(1) - T\).\\
+
+Пусть \(\forall n \geq 2 P(n - 1) \rightarrow P(n)\).\\
+
+Тогда \(\forall n: P(n) - T\)\\
+\section{Аксиома}
+\label{sec:orgd36cf32}
+Для любого \(M \subset N \exists m \in M: \forall a \in M: m \leq a\)\\
+
+Иначе говоря: в любом подмножестве натуральных чисел найдется минимум\\
+\section{Применение мат. индукции}
+\label{sec:orgc4f8bbc}
+Требуется доказать P(1), P(2), \ldots{}\\
+
+\begin{enumerate}
+\item Доказательство справедливости P(1) - база индукции\\
+\item Доказательство \(P(n - 1) \Rightarrow P(n)\) - шаг индукции\\
+\end{enumerate}
+
+Бывает когда во втором шаге доказывается \(P(1), P(2), \ldots, P(n - 1) \Rightarrow P(n)\)\\
+\subsection{Пример}
+\label{sec:org5af2451}
+Доказать \(1 \cdot 1! + 2 \cdot 2! + 3 \cdot 3! + \ldots + n \cdot n! = (n + 1)! - 1\)\\
+
+\begin{enumerate}
+\item \(1 \cdot 1! = 2! - 1\) - T\\
+\item Пусть исходное утверждение верно, тогда докажем \(1 \cdot 1! + 2 \cdot 2! + 3 \cdot 3! + \ldots + (n + 1)(n + 1)! = (n + 2)! - 1\)\\
+
+\((n + 1)! - 1 + (n + 1)(n + 1)! = (n + 2)! - 1\)\\
+
+\((n + 1 + 1)(n + 1)! - 1 = (n + 2)! - 1\)\\
+
+\(\blacksquare\)\\
+\end{enumerate}
+\section{Неравенство Бернулли}
+\label{sec:orgb4679cf}
+\(\forall x > -1 \forall n \in N: (1 + x)^n \geq 1 + nx\)\\
+
+База: \(1 + x = 1 + x\)\\
+
+Переход:\\
+\begin{equation}
+\begin{aligned}
+(1 + x)^{n + 1} \geq 1 + x \cdot (n + 1) \\
+(1 + x)^n \cdot (1 + x) \geq 1 + x \cdot n + x \\
+(1 + x)^n \cdot 1 \geq 1 + x \cdot n = T \\
+(1 + x)^n \cdot x \geq x
+\end{aligned}
+\end{equation}
+
+При \(-1 < x \leq 0: 0 \leq (1 + x)^n \leq 1\) следовательно при отрицательном x будет выполняться.\\
+
+При \(x > 0: (1 + x)^n > 1\) следовательно при положительном x будет выполняться.\\
+\section{Лемма 1}
+\label{sec:orgcb4faad}
+Пусть данны две последовательности \(\{a_n\}\) и \(\{b_n\}\) чисел.\\
+Пусть \(\exists m: a_m \geq b_m\) и \(\forall k \geq m: a_{k+1} - a_k \geq b_{k+1} - b_k\)\\
+Тогда \(\forall n \geq m: a_n \geq b_n\)\\
+
+Иначе говоря если линия a выше b и а растет быстрее b, то любое соотвественное a больше b\\
+
+База:\\
+\begin{equation}
+a_m \geq b_m \land
+a_{m+1} - a_m \geq b_{m+1} - b_m \Rightarrow
+a_{m+1} \geq b_{m=1}
+\end{equation}
+
+Переход: \(P(n) = a_n \geq b_n; P(n - 1) \rightarrow P(n)\)\\
+\begin{equation}
+\begin{aligned}
+a_{n-1} \geq b_{n-1} \land (n - 1 \geq m) \Rightarrow a_n - a_{n-1} \geq b_n - b_{n-1} \\
+(a_n - a_{n-1} \geq b_n - b_{n-1}) + (a_{n-1} \geq b_{n-1}) \Rightarrow a_n \geq b_n \\
+a_{n-1} \geq b_{n-1} \rightarrow a_n \geq b_n \\
+\blacksquare
+\end{aligned}
+\end{equation}
+\section{Лемма 2}
+\label{sec:orge8cb263}
+Пусть данны две последовательности \(\{a_n\}\) и \(\{b_n\}\) чисел.\\
+Пусть \(\exists m: a_m \geq b_m\) и \(\forall k \geq m: a_{k+1} / a_k \geq b_{k+1} / b_k\)\\
+Тогда \(\forall n \geq m: a_n \geq b_n\)\\
+
+Иначе говоря если линия a выше b и а растет быстрее b, то любое соотвественное a больше b\\
+
+База:\\
+\begin{equation}
+n = m - T
+\end{equation}
+
+Переход: \(P(n) = a_n \geq b_n; P(n - 1) \rightarrow P(n)\)\\
+\begin{equation}
+\begin{cases}
+\forall n - 1 \geq m (k = n - 1): a_{n-1} \geq b_{n-1} \\
+a_n / a_{n-1} \geq b_n / b_{n-1}
+\end{cases}
+\end{equation}
+
+Доказать: \(a_n \geq b_n\)\\
+
+\begin{equation}
+\begin{aligned}
+(a_n / a_{n-1} \geq b_n / b_{n-1}) \cdot (a_{n-1} \geq b_{n-1}) \Rightarrow  a_n \geq b_n \\
+a_{n-1} \geq b_{n-1} \rightarrow a_n \geq b_n \\
+\blacksquare
+\end{aligned}
+\end{equation}
+\section{Задача 1}
+\label{sec:org7238bbe}
+Доказать, что \(\frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{3}} + \ldots + \frac{1}{\sqrt{n}} \geq \sqrt{n}\)\\
+
+Пользуем лемму 1.\\
+\begin{equation}
+\begin{aligned}
+a_n = \frac{1}{\sqrt{1}} + \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{3}} + \ldots + \frac{1}{\sqrt{n}} \\
+b_n = \sqrt{n} \\
+\end{aligned}
+\end{equation}
+
+Условие 1:\\
+\begin{equation}
+\begin{aligned}
+m = 1 \Rightarrow a_m \geq b_m - T \\
+\end{aligned}
+\end{equation}
+
+Условие 2:\\
+\begin{equation}
+\begin{aligned}
+a_{k+1} - a_k = \frac{1}{\sqrt{k + 1}} \\
+b_{k+1} - b_k = \sqrt{k + 1} - \sqrt{k} = \frac{(\sqrt{k + 1} - \sqrt{k})(\sqrt{k + 1} + \sqrt{k})}{\sqrt{k + 1} + \sqrt{k}} = \frac{1}{\sqrt{k + 1} + \sqrt{k}} \\ \\
+\frac{1}{\sqrt{k + 1}} \geq \frac{1}{\sqrt{k + 1} + \sqrt{k}} \Rightarrow a_{k+1} - a_k \geq b_{k+1} - b_k
+\end{aligned}
+\end{equation}
+
+Значит мы можем использовать лемму, а следствие леммы и является по сути решением задачи.\\
+\section{Задача 2}
+\label{sec:org55ac369}
+\begin{equation}
+\frac{1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2n - 1)}{2 \cdot 4 \cdot \ldots \cdot  2n} < \frac{1}{\sqrt{2n + 1}}
+\end{equation}
+
+Пользуем лемму 2.\\
+
+Условие 1:\\
+\begin{equation}
+m = 1 \Rightarrow \frac{1}{2} < \frac{1}{\sqrt{3}} - T (2 > \sqrt{3})
+\end{equation}
+
+Условие 2:\\
+\begin{equation}
+\begin{aligned}
+\frac{\frac{1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2 \cdot (k + 1) - 1)}{2 \cdot 4 \cdot \ldots \cdot 2 \cdot (k + 1)}}{\frac{1 \cdot 3 \cdot 5 \cdot \ldots \cdot (2k - 1)}{2 \cdot 4 \cdot \ldots \cdot 2k}} < \frac{\frac{1}{\sqrt{2 \cdot (k + 1) + 1}}}{ \frac{1}{\sqrt{2k + 1}}}
+\iff \frac{2k + 1}{2k + 2} < \sqrt{\frac{2k + 1}{2k + 3}} \\
+\boxed{k>0} \\
+\frac{(2k + 1)^2}{(2k + 2)^2} < \frac{2k + 1}{2k + 3} \\
+(2k + 1)^2 \cdot (2k + 3) < (2k + 1) \cdot (2k + 2)^2 \\
+(2k + 1) \cdot (2k + 3) < (2k + 2)^2 \\
+4k^2 + 4 \cdot 2k + 3 < 4k^2 + 4 \cdot 2k + 4 \\
+\blacksquare
+\end{aligned}
+\end{equation}
+\section{Теорема Корши}
+\label{sec:org58bc983}
+\(\sqrt[n]{x}\) при \(x \geq 0\) это такое значение \(y\), что \(y^n = x\)\\
+
+\((\sqrt[n]{x})^n = x\) - основное свойство.\\
+
+Пусть \(x_1, x_2, \ldots, x_n\) неотрицательные числа.\\
+
+\(\frac{x_1 + x_2 + \ldots + x_n}{n}\) - среднее арфмитическое\\
+
+\(\sqrt[n]{x_1 \cdot x_2 \cdot \ldots \cdot x_n}\) - среднее геометрическое\\
+
+При любых \(x\) среднее арфмитическое не меньше среднего геометрического\\
+\subsection{Лемма}
+\label{sec:org0401369}
+Пусть \(y_1, \ldots, y_n\) - положительные числа, такие, что \(y_1 \cdot ... \cdot y_n = 1\).\\
+
+Тогда \(y_1 + \ldots + y_n \geq n\) и равенство достигаются только при \(y_1 = \ldots = y_n\)\\
+
+База:\\
+\(n = 1\) - очевидно\\
+
+\(n = 2\) - если не все \(y_1, y_2\) равны 1, то без ограничения общности\\
+считаем \(y_1 > 1 \Rightarrow y_2 < 1\)\\
+
+Тогда \((y_1 - 1)(1 - y_2) > 0 \iff y_1 + y_2 - 1 > y_1 \cdot y_2\)\\
+т.е. \(y_1 + y_2 > 2\)\\
+
+Шаг индукции:\\
+Если не все из \(y_1, \ldots, y_n\), то без ограничения общности считаем: \(y_1 > 1, y_2 < 1\)\\
+
+\emph{(т.к. если все больше/меньше единицы, то произведение не получится равное 1)}\\
+
+\((y_1 \cdot y_2) \cdot y_3 \cdot \ldots \cdot y_n = 1\), тогда по предположению индукции:\\
+
+\((y_1 \cdot y_2) + y_3 + \ldots + y_n \geq n - 1\)\\
+используя неравенство \(y_1 + y_2 - 1 > y_1 \cdot y_2\)\\
+получаем \(y_1 + y_2 - 1 + y_3 + \ldots y_n > y_1 \cdot y_2 + y_3 + \ldots + y_n \geq n - 1\)\\
+откуда следует утверждение леммы. \(\blacksquare\)\\
+\subsection{Доказательство}
+\label{sec:org305f7fc}
+Если среди \(x_1, \ldots, x_n\) есть 0, то теорема выполняется.\\
+
+Если все \(x_1, \ldots, x_n\) положительные, то \(s = \sqrt[n]{x_1 \cdot \ldots \cdot x_n}\) и\\
+применим лемму для \(y_1 = \frac{x_1}{s}, \ldots, y_n = \frac{x_n}{s}: y_1 + \ldots + y_n \geq n\).\\
+
+Значит, \(\frac{x_1}{s} + \ldots \frac{x_n}{s} \geq n \iff \frac{x_1 + \ldots + x_n}{n} \geq s = \sqrt[n]{x_1 \cdot \ldots \cdot x_n}\)\\
+\section{Формула стирлинга}
+\label{sec:orgd18a4b3}
+\(n! \approx \frac{n^n}{2^n} \sqrt{2 \pi n} (1 + \frac{1}{12n})\)\\
+\end{document}

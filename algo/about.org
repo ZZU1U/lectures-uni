@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       d3ac92d4-5060-4823-9259-bb1841f5fd82
+:END:
+#+title: algo
+#+category: algo
+
+* General
+Преподаватель: Наумова Ольга Викторовна
+
+* HW

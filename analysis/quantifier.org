@@ -1,0 +1,104 @@
+:PROPERTIES:
+:ID:       b3335ce6-b81b-43e5-aedb-62dce5105cc5
+:END:
+#+title: analysis quantifier
+#+latex_class: article
+#+latex_class_options: [letterpaper]
+#+latex_header: \usepackage{fontspec}
+#+latex_header: \setmainfont[Ligatures=TeX]{CMU Serif}
+#+latex_header: \usepackage{bookmark}
+#+latex_header: \usepackage{amssymb}
+#+latex_header: \usepackage{amsmath}
+#+latex_header: \setlength{\parindent}{0pt}
+#+options: toc:t
+#+lanugage: ru
+#+latex_compiler: xelatex
+
+* Contents :toc:noexport:
+- [[#кванторы-и-струтктура-теорем][Кванторы и струтктура теорем]]
+  - [[#примеры][Примеры]]
+
+* Кванторы и струтктура теорем
+$\forall$ -- кватор всеобщности -- для любого
+
+$\exists$ -- квантор существования -- существует
+
+$\exists!$ -- квантор единственности -- существует лишь один
+
+$\forall x: A(x) \rightarrow B(x)$ пишут $A(x) \rightarrow B(x)$
+
+Говорят: достаточно для; достаточный признак; необходимое условие для; только тогда, когда; B следует из A; B вытекает из A.
+
+Если $A(x) \rightarrow B(x)$ и $B(x) \rightarrow A(x)$, то пишут $A(x) \iff B(X)$
+
+Говорят: равносильно, тогда и только тогда
+
+
+** Примеры
+*** 1
+$A = \{x: P(x)\}, B = \{x: Q(x)\}$
+
+Доказать: $P(x) => Q(x) \iff A \subset B$
+
+$P(x) \rightarrow Q(x) \iff \forall x: P(x) \rightarrow Q(x)$
+
+Необходимость: $x \in A \rightarrow P(x) = T \rightarrow Q(x) = T \rightarrow x \in B$
+Достаточность:
+\begin{equation}
+\begin{cases}
+x \in A \Rightarrow P(x) = T\\
+x \in B \Rightarrow Q(x) = T
+\end{cases}
+\Rightarrow P(x) \rightarrow Q(x)
+\end{equation}
+
+\begin{equation}
+\begin{cases}
+x \in A \Rightarrow P(x) = F \\
+\left[
+\begin{array}{ll}
+x \in B \\
+x \notin B
+\end{array}
+\right.
+\iff
+\left[
+\begin{array}{ll}
+Q(x) = T \\
+Q(x) = F
+\end{array}
+\right.
+\end{cases}
+\end{equation}
+что и является определением импликации.
+
+*** 2
+Установить устинностное значение
+
+\begin{equation}
+\begin{aligned}
+\forall c \exists b \forall x: x^2 + bx + c > 0 \\
+\forall c \exists b: D < 0 \\
+\forall c \exists b: b^2 - 4c < 0 \\
+\forall c \exists b: b^2 < 4c \\
+b^2 > 0 \Rightarrow 4c > 0
+\end{aligned}
+\end{equation}
+
+Но это неправда (например при c = -1), следовательно изначальное утверждение ложное
+
+*** 3
+$(x + y = 1) \land ((x <= 3) \rightarrow (x > y))$
+$(x + y = 1) \land ((x > 3) \lor (x > y))$
+
+[[./src/quantifier_graph.png]]
+
+Если построить это таким график, то ответом будет та часть прямой, которая находится хотя бы в одном из регионов.
+
+Эту прямую можно упроситить до вида  $x = 1 - y {x >= 0.5}$
+
+*** 4
+Построить отрицание к
+$\forall \epsilon > 0 \exists \delta > 0 \forall x_1 \in [0;1] \forall x_2 \in [0;1]: |x_1 - x_2| < \delta \rightarrow |x_1^2 - x_2^2| < \epsilon$
+
+$A = \neg{(|x_1 - x_2| < \delta)} \lor |x_1^2 - x_2^2| < \epsilon$

@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       326c78c1-3bf5-417d-8cbf-08bbd4912de0
+:END:
+#+title: discrete
+#+category: discrete

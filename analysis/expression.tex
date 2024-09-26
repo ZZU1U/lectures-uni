@@ -1,0 +1,127 @@
+% Created 2024-09-25 Wed 00:53
+% Intended LaTeX compiler: xelatex
+\documentclass[letterpaper]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{bookmark}
+\setmainfont[Ligatures=TeX]{CMU Serif}
+\setlength{\parindent}{0pt}
+\author{Gleb Anohin}
+\date{\today}
+\title{analysis expression}
+\hypersetup{
+ pdfauthor={Gleb Anohin},
+ pdftitle={analysis expression},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 29.1 (Org mode 9.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Выссказывание}
+\label{sec:orgb00e563}
+\subsection{Определение}
+\label{sec:orgb6f77d0}
+Повествовательное предложение, которое можно отнести к верным или неверным утверждениям.
+
+Обозначение - a, b, c
+\subsection{Примеры}
+\label{sec:orge9f71ba}
+\begin{itemize}
+\item Эта ручка синяя (правдивое выссказывание)
+\item Все студента специалитета -- кролики (ложное выссказывание)
+\item Слон большой (не выссказывание, потому что не понятно насколько большой и какой слон)
+\end{itemize}
+\section{Предикат}
+\label{sec:org2715b35}
+\subsection{Определение}
+\label{sec:org0cf3c4b}
+Некоторое выражение (не обязательно математическое), зависящее от переменных, такое, что при подстановке в переменные некоторых значений, выражение становится выссказыванием.
+
+Множество допустимых (например по условию задачи) значений -- область определения
+
+Обозначение - A(x, y, \ldots{}), B(z, q, \ldots{})
+\subsection{Примеры}
+\label{sec:org834a567}
+\begin{itemize}
+\item ``\(a > 0\)'', \(a \in Z\)
+\item ``x - Вася'', x - человек
+\item ``Все натуральные числа, заканчивающиеся на 0,2,4,6,8 - четные'' - не предикат, потому что нет аргументов
+\end{itemize}
+\section{Операции с выссказыванием и предикатами}
+\label{sec:orgd2d415c}
+\subsection{Отрицание}
+\label{sec:orgfd7c3f4}
+\subsubsection{Определение}
+\label{sec:orgcdfe7b8}
+Операция инвертирующая истинность выссказывания.
+
+\textbf{В предложениях обычно применяется к глаголам/свойствам}
+\subsubsection{Примеры}
+\label{sec:orgf209da0}
+\begin{itemize}
+\item Доска на полу \(\rightarrow\) Доска не на полу
+
+Доска - объект
+На полу - свойство
+
+\item Все студенты родились в 2008. \(\rightarrow\) Не все студенты родились в 2008.
+
+\emph{Что? Мы же говорили, что ``не'' применяется к свойствам?}
+
+В этом случае мы отрицаем ``не все студенты'', чтобы сохранить смысл. Нужно просто думать
+
+A = ``x родился в 2008 году''
+
+\(a = [\forall s \in M: A(s)]\)
+\(\neg{a} = [\exists s \in M: \neg{A(s)}]\)
+\end{itemize}
+\subsection{Конъюнкция}
+\label{sec:orgedda6c2}
+Логическое И (\(\land\))
+\subsection{Дизъюнкция}
+\label{sec:org279f8ca}
+Логическое ИЛИ (\(\lor\))
+\subsection{Импликация}
+\label{sec:org0697e21}
+Если А то Б (\(\Rightarrow\))
+
+\begin{center}
+\begin{tabular}{rrr}
+A & B & A \(\rightarrow\) B\\
+\hline
+0 & 0 & 1\\
+0 & 1 & 1\\
+1 & 0 & 0\\
+1 & 1 & 1\\
+\end{tabular}
+\end{center}
+\section{Теорема}
+\label{sec:orgc2531f1}
+Пусть a, b, c - выссказывания, тогда
+
+\begin{enumerate}
+\item \((a \land b) \land c = a \land (b \land c)\) -- сочетательный закон конъюнкции
+\item \((a \lor b) \lor c = a \lor (b \lor c)\) -- сочетательный закон дизъюнкции
+\item \(a \land (c \lor b) = (a \land b) \lor (a \land c)\) -- распределительный закон конъюнкции относительно дизъюнкции
+\item \(a \lor (c \land b) = (a \lor b) \land (a \lor b)\) --
+\item \(a \land b = b \land a\) -- переместительный закон конъюнкции
+\item \(a \lor b = b \lor a\) -- переместительный закон дизъюнкции
+\item \(a \land (\neg{a}) = T\) -- закон исключения третьего
+\item \(\neg{(\neg{a})} = a\)
+\item \(\neg{(a \land b)} = \neg{a} \lor \neg{b}\)
+\item \(\neg{(a \lor b)} = \neg{a} \land \neg{b}\)
+\item \(a \rightarrow b = \neg{a} \lor b\)
+\item \(\neg{a \rightarrow b} = {a} \land \neg{b}\)
+\item \(a \rightarrow b = \neg{a} \rightarrow \neg{b}\)
+\end{enumerate}
+\end{document}

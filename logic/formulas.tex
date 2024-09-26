@@ -1,0 +1,227 @@
+% Created 2024-09-24 Tue 14:07
+% Intended LaTeX compiler: xelatex
+\documentclass[letterpaper]{article}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{CMU Serif}
+\usepackage{bookmark}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\setlength{\parindent}{0pt}
+\author{Gleb Anohin}
+\date{\textit{{[}2024-09-18 Wed 16:58]}}
+\title{logic formulas}
+\hypersetup{
+ pdfauthor={Gleb Anohin},
+ pdftitle={logic formulas},
+ pdfkeywords={},
+ pdfsubject={Заметки к  лекции},
+ pdfcreator={Emacs 29.1 (Org mode 9.8)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{{\bfseries\sffamily TODO} from galery}
+\label{sec:org8a43a05}
+\section{что-то}
+\label{sec:orgb8333d0}
+\(F \equiv H \iff \phi(F(x_1, x_2, \ldots, x_n)) = \phi(H(x_1, x_2, \ldots, x_n))\)\\
+
+Две формулы F и H тогда и только тогда, когда формула \(F \iff H\) есть тавтология.\\
+
+Следовательно\\
+отношение равносильности между формулами есть отношение эквивалентности.\\
+\subsection{Основные равносильности}
+\label{sec:org382a9ff}
+\(A \leftrightarrow B \equiv (A \rightarrow B) \land (B \rightarrow A) \equiv (A \land B) \lor (\overline{A} \land \overline{B})\)\\
+\(A \rightarrow B \equiv \overline{A} \lor B \equiv \overline{A \land \overline{B}}\)\\
+\(A \rightarrow B \equiv \overline{B} \rightarrow \overline{A}\)\\
+\(A \land B \equiv \overline{A \rightarrow \overline{B}} \equiv \overline{\overline{A}\lor \overline{B}}\)\\
+\subsection{Равносильные}
+\label{sec:orgfdc0f03}
+let \(A \equiv B\)\\
+
+\(\overline{A} \equiv \overline{B}\)\\
+\(A \land B \equiv B \land C\)\\
+\(A \lor B \equiv B \lor C\)\\
+
+\(A \rightarrow C \equiv B \rightarrow C\)\\
+\(C \rightarrow A = C \rightarrow B\)\\
+\(A \leftrightarrow C = B \leftrightarrow C\)\\
+\subsection{Теорема о подстановках}
+\label{sec:org798e030}
+\(C_A\) - формула, содержащая в качестве своей подформулы формулу \(A\).\\
+Пусть \(C_B\) получается из \(C_A\) заменой формулы \(A\)\\
+в этом вхождении на \(B\). Тогда, если \(A \equiv B\), то \(C_A \equiv C_B\)\\
+
+\(C\) - формула, содержащая в которой выделено\\
+одно вхождение переменной \(V\).\\
+Пусть \(C_X, C_Y\) получается из \(C\) заменой переменной \(V\) на \(X, Y\)\\
+соответственно. Тогда, если \(X \equiv Y\), то \(C_X \equiv C_Y\)\\
+
+Всякую формулу алгебры можно заменить равносильной ей формулой, содержащей только логический операции конъюнкции, дизъюнкции и отрицания.\\
+\subsection{Штрих Шеффера}
+\label{sec:orgd92af91}
+\(x \uparrow y = \overline{x \land y}\)\\
+\subsection{Стрелка Пирса}
+\label{sec:orgc862ce8}
+\(x \downarrow y \equiv \overline{x \lor b}\)\\
+\section{Двойственность}
+\label{sec:org286e1aa}
+Символы \(\land, \lor\) называются двойственными друг другу.\\
+
+Формула называется двойственной другой, если все операции заменили на двойственные.\\
+
+Двойственный список - инвертированный по значениям список.\\
+\section{фф}
+\label{sec:orgf2fd83f}
+Пусть \(A(x_i)\) - формула, \(<s_i>\) - список истинности её переменных.\\
+Тогда \(A(s_i) \equiv T \iff A^* \equiv F\) на списке \(<t_i>\) двойственном к \(<s_i>\)\\
+
+Приницп двойственности: \(A \equiv B \Rightarrow A^* \equiv B^*\).\\
+
+Можно использовать для нахождения новых равносильностей.\\
+
+\(X \land (Y \lor Z) \equiv (X \land Y) \lor (Z \land Z) \Rightarrow X \lor (Y \land Z) \equiv (X \lor Y) \land (Z \lor Z)\)\\
+\section{Пусть}
+\label{sec:org8901531}
+\(x_1, x_2, \ldots, x_n\) - элементарные высказывания\\
+
+Формула алгебры логики - функция входящих в нее элементарных выссказываний\\
+
+\(A(x_1, x_2, \ldots, x_n)\) - формула составленная из \(x_1, \ldots, x_n\)\\
+
+\(x_1, \ldots x_n\) будем называть логическими переменными этой формулы\\
+
+Конъюктивным одночленом называется конъюкция переменных или их отрицаний. Дизъюктивный - аналогично.\\
+
+ДНФ (дизъюктивная нормальная форма) формулы A называется равносильная ей формула, представляющая собой дизъюнкцию элементарных конъюкций.\\
+
+КНФ (конъюктивная нормальная форма) - наоборот.\\
+
+Всякая формула обладает обеими ДНФ и КНФ.\\
+\subsection{Пример}
+\label{sec:org6863180}
+\((A \uparrow B) \rightarrow \overline{(\overline{C} \rightarrow (B \lor C))}\)\\
+\section{Совершенность}
+\label{sec:orgc35284b}
+ДНФ/КНФ называется совершенной, если\\
+\begin{enumerate}
+\item в каждую из элементарных дизъюнкций/конъюкций логическая переменная входит только один раз.\\
+\item если логическая переменная входит в одну из элементарных дизъюнкций/конъюкций, то она входит и во все остальные.\\
+\item Все элементарные дизъюнкции/конъюкции различны.\\
+\end{enumerate}
+
+\((x \land y \land z) \lor (\overline{x} \land y \land z) \lor (x \land \overline{y} \land z)\) - СДНФ\\
+
+Каждая не являющаяся тождественно ложной или истинной формула от n аргументов имеет единственную СДНФ/СКНФ.\\
+\subsection{{\bfseries\sffamily IDEA} доказать}
+\label{sec:orgb854f47}
+\section{Приведение к СНФ:}
+\label{sec:orgef2f51b}
+\subsection{Тождественные преобразования}
+\label{sec:org0e2e186}
+\subsubsection{Алгоритм}
+\label{sec:org23a081f}
+\begin{enumerate}
+\item СКНФ
+\label{sec:orgc379bf9}
+\begin{enumerate}
+\item Найти КНФ\\
+\item Путем добавления единичных противоречий \((a \land \neg{a})\) для недостающих переменных в отдельные слагаемые привести к СКНФ\\
+\end{enumerate}
+\item СДНФ
+\label{sec:org326773d}
+\begin{enumerate}
+\item Найти ДНФ\\
+\item Путем добавления единичных тавтологий \((a \lor \neg{a})\) для недостающих переменных в отдельные множежители привести к СДНФ\\
+\end{enumerate}
+\end{enumerate}
+\subsection{Таблица истинности}
+\label{sec:orgde897a5}
+\subsubsection{Алгоритм}
+\label{sec:org82d117a}
+\begin{enumerate}
+\item СКНФ
+\label{sec:org5de8358}
+\begin{enumerate}
+\item Нужно выбрать все те значения переменных, когда формула ложна.\\
+\item Для каждого набора выписываем элементарную дизъюнкцию. Переменная входит в нее сама если в этом наборе F иначе ее отрицание.\\
+\item Образуем конъюнкцию всех дизъюнкций\\
+\end{enumerate}
+\item СДНФ
+\label{sec:orgae02e5d}
+\begin{enumerate}
+\item Нужно выбрать все те значения переменных, когда формула истинна.\\
+\item Для каждого набора выписываем элементарную конъюнкцию. Переменная входит в нее сама если в этом наборе T иначе ее отрицание.\\
+\item Образуем дизъюнкцию всех конъюнкций\\
+\end{enumerate}
+\end{enumerate}
+\subsubsection{Пример}
+\label{sec:org8125624}
+\begin{center}
+\begin{tabular}{rrrr}
+x & y & z & F(x, y, z)\\
+\hline
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & 1\\
+0 & 1 & 1 & 1\\
+1 & 0 & 0 & 1\\
+1 & 0 & 1 & 0\\
+1 & 1 & 0 & 0\\
+1 & 1 & 1 & 1\\
+\end{tabular}
+\end{center}
+
+СДНФ -- \((\neg{x} \land \neg{y} \land \neg{z}) \lor (\neg{x} \land y \land \neg{z}) \lor \dots\)\\
+
+СКНФ -- \((x \lor y \lor \neg{z}) \land (\neg{x} \lor y \lor \neg{z}) \land (\neg{x} \lor \neg{y} \lor z)\)\\
+\section{Проблема разрешимости}
+\label{sec:org0b66c27}
+\subsection{Критерий тождественной}
+\label{sec:org0f10193}
+
+\subsection{\ldots{}}
+\label{sec:orga6000c9}
+Элементарная дизъюнкция тождественно истин\\
+\section{Логическое следование}
+\label{sec:orgacb21cd}
+\(A \rightarrow B \land B \rightarrow C \Rightarrow A \rightarrow C\)\\
+
+\(H(x_1, \dots, x_n)\) называется логическим следствие формул. \(F_1(x_1, \dots, x_n); \dots; F_m(x_1, \dots, x_n)\) если \(H\) превращается в истинное выссказывания при всякой такой подстановке вместо ее переменных конкретных выссказываний, при которых формулы \(F_1, \dots, F_n\) превращаются в истинные выссказывания.\\
+
+Короче (математически не правильно) \(H \Rightarrow F_1, \dots F_m\) обозначается \(F_1, \dots, F_n \models H\)\\
+
+Из истинности посылок следует истинность вывода.\\
+
+\(F \models H \iff \models F \rightarrow H\) (\(F \rightarrow H\) -- тавтология)\\
+
+\(\forall F_1, \dots, F_m, H : (F_1, \dots F_m \models H) \land (F_1 \land \dots \land F_m \models H) \land (\models (F_1 \land \dots \land \dots F_m ) \rightarrow H)\)\\
+\subsection{Свойства}
+\label{sec:org50f4c79}
+\begin{enumerate}
+\item \(F_1, \dots, F_m \models F_i \Rightarrow\) для любого \(i\)\\
+\item \(F_1, \dots, f_m \models G_i | j \in 1,\dots,p; G_1, \dots, G_p \models H\), то \(F_1, \dots F_m, \models H\)\\
+\end{enumerate}
+
+\(F \equiv H \iff F \models H \land H \models F\)\\
+
+Если формула тавтология, то и ее любое следствие является тавтологией.\\
+\(\models F, F \models H \Rightarrow \models H\)\\
+\subsection{Правила логических умозаключений}
+\label{sec:orgefd55a1}
+\((\text{modus ponens}): \frac{F, F \rightarrow G}{G}\)\\
+\(\models F, F \rightarrow G \Rightarrow \models G\)\\
+
+\((\text{modus ponens}): \frac{F \rightarrow G, \neg{G}}{\neg{F}}\)\\
+\(\models \neg{G}, F \rightarrow G \Rightarrow \models \neg{F}\)\\
+\end{document}
